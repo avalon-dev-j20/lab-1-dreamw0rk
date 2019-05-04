@@ -16,7 +16,7 @@ public class Task4 implements Task {
     @Override
     public void run() {
         Person a = new Person("Иван", "Иванов");
-        Person b = new Person("Иван", "Иванов");
+        Person b = new Person("Иван", "Иванов1");
         boolean isEqual = a.equals(b);
         /*
          * TODO(Студент): Выполните задание №4
@@ -31,5 +31,10 @@ public class Task4 implements Task {
          * 3. С использованием отладчика проверьте что сравнение
          *    объектов типа Person выполняется корректно.
          */
+
+        System.out.print("\nTask 4:");
+        System.out.print("\nHashCode Person a = " + a.hashCode());
+        System.out.print("\nHashCode Person b = " + b.hashCode());
+        System.out.print("\nIsEqual: " + isEqual + "\n");
     }
 }
