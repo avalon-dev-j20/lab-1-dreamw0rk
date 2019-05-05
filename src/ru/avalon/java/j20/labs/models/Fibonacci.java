@@ -18,7 +18,7 @@ import java.util.*;
  */
 public class Fibonacci implements Iterable<Integer> {
 
-    private static List<Integer> fibonacci = new ArrayList<>();
+    private List<Integer> fibonacci = new ArrayList<>();
 
     public Fibonacci(int len) {
         fibonacci.add(0, 0);
@@ -33,9 +33,7 @@ public class Fibonacci implements Iterable<Integer> {
      * Итератор, выполняющий обход последовательности
      * чисел Фибоначчи.
      */
-    private static class FibonacciIterator implements Iterator<Integer> {
-
-        int index = 0;
+    private  class FibonacciIterator implements Iterator<Integer> {
 
         /**
          * Определяет, есть ли следующее значение
@@ -45,9 +43,12 @@ public class Fibonacci implements Iterable<Integer> {
          * последовательности существует. В обратном случае
          * {@code false}.
          */
+
+        private int currPos = 0;
+
         @Override
         public boolean hasNext() {
-            return fibonacci.size() > index;
+            return currPos < fibonacci.size();
         }
 
         /**
@@ -58,7 +59,8 @@ public class Fibonacci implements Iterable<Integer> {
          */
         @Override
         public Integer next() {
-            return fibonacci.get(index++);
+            if (currPos >= fibonacci.size()) throw new NoSuchElementException();
+            return fibonacci.get(currPos++);
         }
     }
 
